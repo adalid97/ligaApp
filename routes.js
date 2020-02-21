@@ -1,24 +1,24 @@
+const cors = require('cors')
 const express = require("express");
 const controller = require("./controllers.js");
 
+
 const router = express.Router();
 
-//------------ API REST CRUD
 
-// Read All
-router.get('/equipos', controller.listEquipo);
+// --------------- API REST CRUD
 
-// Read
-router.get('/equipos/:id', controller.readEquipo);
+router.get    ("/equipos",      cors(), controller.listEquipos);   // Read All
+router.get    ("/equipos/:id",  cors(), controller.readEquipo);    // Read
+router.delete ("/equipos/:id",  cors(), controller.deleteEquipo);  // Delete
+router.put    ("/equipos/:id",  cors(), controller.updateEquipo);  // Update
+router.post   ("/equipos",      cors(), controller.createEquipo);  // Create
 
-// DELETE
-router.delete('/equipos/:id', controller.deleteEquipo);
-
-// UPDATE
-router.put('/equipos/:id', controller.updateEquipo);
-
-// CREATE
-router.post('/equipos/', controller.createEquipo);
+router.get    ("/jugadores",     cors(), controller.listarJugadores);  // Read All
+router.get    ("/jugadores/:id", cors(), controller.readJugador);   // Read
+router.delete ("/jugadores/:id", cors(), controller.deleteJugador); // Delete
+router.put    ("/jugadores/:id", cors(), controller.updateJugador); // Update
+router.post   ("/jugadores",     cors(), controller.createJugador); // Create
 
 
 module.exports = router;
